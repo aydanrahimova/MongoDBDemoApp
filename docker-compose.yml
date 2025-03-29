@@ -1,0 +1,32 @@
+services:
+  book-app:
+    image: aydanrahimova/book-app
+    container_name: bookstore_app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    container_name: mongo_db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo:/data
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongodb
+      - MONGO_INITDB_ROOT_PASSWORD=2810
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo_express
+    ports:
+      - "8081:8081"
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=mongodb
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=2810
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+
+volumes:
+  mongo: { }

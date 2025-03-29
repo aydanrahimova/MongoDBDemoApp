@@ -1,0 +1,13 @@
+spring:
+  data:
+    mongodb:
+      username: mongodb
+      password: 2810
+      uri: mongodb://mongodb:2810@mongodb:27017/book-app?authSource=admin
+      host: mongodb
+      port: 27017
+      database: book-app
+      authentication-database: admin
+  jpa:
+    hibernate:
+      ddl-auto: update
